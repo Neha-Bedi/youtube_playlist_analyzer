@@ -1,7 +1,7 @@
 let p = require("puppeteer");
 
 let url = process.argv[2];
-let page;
+let tab;
 (async function(){
 let browser = await p.launch({
     headless: false,
@@ -9,11 +9,11 @@ let browser = await p.launch({
     args: ["--start-maximized"],
 });
 
-let pages = await browser.pages();
-page = pages[0];
+let tabs = await browser.tabs();
+tab = tabs[0];
 
-await page.goto(url);
-let reqTime = await page.evaluate(async function () {
+await tab.goto(url);
+let reqTime = await tab.evaluate(async function () {
 
     function hmsToSecondsOnly(str) {
         var p = str.split(':'),
