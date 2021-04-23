@@ -1,9 +1,9 @@
-let puppeteer = require("puppeteer");
+let p = require("puppeteer");
 
 let url = process.argv[2];
 let page;
 (async function(){
-let browser = await puppeteer.launch({
+let browser = await p.launch({
     headless: false,
     defaultViewport: null,
     args: ["--start-maximized"],
