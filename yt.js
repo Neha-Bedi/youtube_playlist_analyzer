@@ -9,7 +9,7 @@ let browser = await p.launch({
     args: ["--start-maximized"],
 });
 
-let tabs = await browser.tabs();
+let tabs = await browser.pages();
 tab = tabs[0];
 
 await tab.goto(url);
@@ -31,9 +31,9 @@ let reqTime = await tab.evaluate(async function () {
     let totalvids = Number(tVids.innerText);
     let scrolls = Math.ceil(totalvids / 100);
 let tVal = await new Promise(function(resolve,reject){
-    let interval =setInterval(function()
+    let interval = setInterval(function()
     {
-        let vids = document.querySelectorAll(".yt-simple-endpoint.style-scope.ytd-playlist-video-renderer");
+        let vids = document.querySelectorAll(".yt-simple-endpoint.style-scope.ytd-playlist-video-renderer"); //100 => 200
         vids[vids.length-1].scrollIntoView();
 
 
